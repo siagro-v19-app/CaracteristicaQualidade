@@ -1,0 +1,25 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core">
+   <Dialog
+		id="CaracteristicaQualidadeDialog"
+		title="{view>/titulo}"
+		class="sapUiSmallMargin">
+   	
+   		<VBox id="vBoxCaracteristica" class="sapUiSmallMargin sapUiSizeCompact">	
+			<Label text="Código:" labelFor="codigo"/>
+			<Input value="{model>/Codigo}" id="codigo" required="true" editable="{view>/codigoEdit}"/>
+			
+			<Label text="Descrição:" labelFor="descricao"/>
+			<Input value="{model>/Descricao}" id="descricao" required="true"/>
+			
+			<Label text="Não exibir:" labelFor="naoexibir"/>
+			<CheckBox selected="{model>/NaoExibir}" id="naoexibir"/>
+		</VBox>
+   		
+   		<buttons>
+   			<Button text="Salvar" press="onSaveDialog"/>
+   			<Button text="Fechar" press="onCloseDialog"/>
+   		</buttons>
+   </Dialog>
+</core:FragmentDefinition>
