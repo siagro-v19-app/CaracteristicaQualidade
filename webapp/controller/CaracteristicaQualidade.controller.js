@@ -37,12 +37,6 @@ sap.ui.define([
 			
 			this._operacao = "incluir";
 			
-			oDialog.setEscapeHandler(function(oPromise){
-				if(oJSONModel.hasPendingChanges()){
-					oJSONModel.resetChanges();
-				}
-			});
-			
 			var oNovoCaracteristica = {
 				"Codigo": "",
 				"Descricao": "",
