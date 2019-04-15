@@ -4,9 +4,9 @@
    <Dialog
 		id="CaracteristicaQualidadeDialog"
 		title="{view>/titulo}"
-		class="sapUiSmallMargin">
+		class="sapUiSmallMargin sapUiSizeCompact">
    	
-   		<VBox id="vBoxCaracteristica" class="sapUiSmallMargin sapUiSizeCompact">	
+   		<VBox id="vBoxCaracteristica" class="sapUiSmallMargin">	
 			<Label text="Código:" labelFor="codigo"/>
 			<Input value="{model>/Codigo}" id="codigo" required="true" editable="{view>/codigoEdit}"/>
 			
@@ -18,8 +18,8 @@
 		</VBox>
    		
    		<buttons>
-   			<Button text="Salvar" press="onSaveDialog"/>
-   			<Button text="Fechar" press="onCloseDialog"/>
+   			<Button text="Salvar" press="onSaveDialog" type="Accept"/>
+   			<Button text="Fechar" press="onCloseDialog" type="Reject"/>
    		</buttons>
    </Dialog>
 </core:FragmentDefinition>

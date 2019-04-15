@@ -2,8 +2,10 @@ sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/m/MessageBox",
 	"sap/ui/model/json/JSONModel",
+	"sap/ui/model/Filter",
+	"sap/ui/model/FilterOperator",
 	"br/com/idxtecCaracteristicaQualidade/services/Session"
-], function(Controller, MessageBox, JSONModel, Session) {
+], function(Controller, MessageBox, JSONModel, Filter, FilterOperator, Session) {
 	"use strict";
 
 	return Controller.extend("br.com.idxtecCaracteristicaQualidade.controller.CaracteristicaQualidade", {
@@ -15,6 +17,29 @@ sap.ui.define([
 
 			this.getOwnerComponent().setModel(oJSONModel, "model");
 			this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass());
+			
+			this.getModel().attachMetadataLoaded(function(){
+				var oFilter = new Filter("Empresa", FilterOperator.EQ, Session.get("EMPRESA_ID"));
+				var oView = this.getView();
+				var oTable = oView.byId("tableCaracteristica");
+				var oColumn = oView.byId("columnDescricao");
+				
+				oTable.sort(oColumn);
+				oView.byId("tableCaracteristica").getBinding("rows").filter(oFilter, "Application");
+			});
+		},
+		
+		filtraCaract: function(oEvent){
+			var sQuery = oEvent.getParameter("query");
+			var oFilter1 = new Filter("Empresa", FilterOperator.EQ, Session.get("EMPRESA_ID"));
+			var oFilter2 = new Filter("Descricao", FilterOperator.Contains, sQuery);
+			
+			var aFilters = [
+				oFilter1,
+				oFilter2
+			];
+
+			this.getView().byId("tableCaracteristica").getBinding("rows").filter(aFilters, "Application");
 		},
 		
 		onRefresh: function(){
