@@ -11,12 +11,6 @@
 			<Page showHeader="false" class="sapUiContentPadding" enableScrolling="false">
 				<content>
 					<t:Table id="tableCaracteristica"
-						rows="{
-							path: '/CaracteristicaQualidades',
-							sorter: {
-								path: 'Descricao'
-							}
-						}"
 						selectionMode="Single"
 						selectionBehavior="Row"
 						class="sapUiSizeCondensed"
@@ -27,7 +21,7 @@
 							<Toolbar>
 								<Title text="Lista de Características"/>
 								<ToolbarSpacer/>
-								<SearchField placeholder="Pesquisar característica..." width="30%" search="filtraCaract"/>
+								<SearchField placeholder="Pesquisar descrição..." width="30%" search="filtraCaract"/>
 							</Toolbar>
 						</t:toolbar>
 						<t:columns>
